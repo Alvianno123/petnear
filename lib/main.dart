@@ -7,6 +7,7 @@ import 'Api/apiConnect.dart';
 import 'User/memberPage.dart';
 import 'Oprator/opratorPage.dart';
 import 'Admin/adminPage.dart';
+import 'ContactCenter/contactPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/OpratorPage': (BuildContext context) => new OpratorPage(
               username: username,
             ),
+        '/ContactPage': (BuildContext context) => new ContactPage(),
         '/MyHomePage': (BuildContext context) => new MyHomePage(),
       },
     );
@@ -89,12 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           new IconButton(
             icon: new Icon(
-              Icons.contact_page,
+              Icons.contact_phone,
               color: Color.fromARGB(255, 255, 255, 255),
               size: 40,
             ),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/MyHomePage');
+              Navigator.pushReplacementNamed(context, '/ContactPage');
             },
           ),
         ],
