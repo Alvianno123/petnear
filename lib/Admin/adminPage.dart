@@ -15,8 +15,18 @@ class AdminPage extends StatelessWidget {
         actions: <Widget>[
           new IconButton(
             icon: new Icon(
+              Icons.notifications_active_outlined,
+              color: Color.fromARGB(255, 255, 255, 255),
+              size: 40,
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/MyHomePage');
+            },
+          ),
+          new IconButton(
+            icon: new Icon(
               Icons.exit_to_app,
-              color: Colors.white,
+              color: Color.fromARGB(255, 255, 255, 255),
               size: 40,
             ),
             onPressed: () {

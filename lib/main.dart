@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-
-import 'memberPage.dart';
-import 'opratorPage.dart';
-import 'adminPage.dart';
+import 'Api/apiConnect.dart';
+import 'User/memberPage.dart';
+import 'Oprator/opratorPage.dart';
+import 'Admin/adminPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController pass = new TextEditingController();
 
   Future<List?> _login() async {
-    String url = "http://localhost:8080/petnear/login/login.php";
+    String url = (API.login);
     final response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": pass.text,
@@ -86,12 +86,36 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(
+              Icons.help_center_outlined,
+              color: Color.fromARGB(255, 255, 255, 255),
+              size: 40,
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/MyHomePage');
+            },
+          ),
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(25, 50, 25, 0),
+        padding: const EdgeInsets.fromLTRB(25, 15, 25, 0),
         child: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(100, 0, 25, 20),
+                child: Text(
+                  'Welcome to PetNear !!!',
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 19,
+                      color: Color.fromARGB(255, 0, 145, 255)),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(18, 0, 18, 18),
                 child: TextField(
@@ -171,6 +195,46 @@ class _MyHomePageState extends State<MyHomePage> {
                   //color: Colors.blue,
                   //shape: RoundedRectangleBorder(
                   //   borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                  onPressed: () {
+                    _login();
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: ElevatedButton(
+                  child: Text(
+                    "Lupa Password? Klik di sini !!!",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  onPressed: () {
+                    _login();
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: ElevatedButton(
+                  child: Text(
+                    "Daftar / Registrasi",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    _login();
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                  child: Text(
+                    "SAYANGI HEWAN & TUMBUHAN BERSAMA PETNEAR. \n \n © 2023 PT. Wijaya Global Solusindo \n ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
                   onPressed: () {
                     _login();
                   },
