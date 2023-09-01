@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           new IconButton(
             icon: new Icon(
-              Icons.help_center_outlined,
+              Icons.contact_page,
               color: Color.fromARGB(255, 255, 255, 255),
               size: 40,
             ),
