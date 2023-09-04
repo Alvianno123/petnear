@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'Api/apiConnect.dart';
-import 'User/memberPage.dart';
-import 'Oprator/opratorPage.dart';
-import 'Admin/adminPage.dart';
-import 'ContactCenter/contactPage.dart';
+import 'Pages/User/memberPage.dart';
+import 'Pages/Oprator/opratorPage.dart';
+import 'Pages/Admin/adminPage.dart';
+import 'Pages/ContactCenter/contactPage.dart';
+import 'Pages/User/registrationPage.dart';
+import 'Pages/User/forgotPasswordPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
               username: username,
             ),
         '/ContactPage': (BuildContext context) => new ContactPage(),
+        '/RegistrationPage': (BuildContext context) => new RegistrationPage(),
+        '/ForgotPasswordPage': (BuildContext context) =>
+            new ForgotPasswordPage(),
         '/MyHomePage': (BuildContext context) => new MyHomePage(),
       },
     );
@@ -107,14 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.fromLTRB(100, 0, 25, 20),
+                padding: const EdgeInsets.fromLTRB(25, 0, 25, 20),
                 child: Text(
-                  'Welcome to PetNear !!!',
+                  'Welcome to PetNear \n Hug Me, Please !!!',
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w900,
-                      fontSize: 19,
+                      fontSize: 25,
                       color: Color.fromARGB(255, 0, 145, 255)),
                 ),
               ),
@@ -210,7 +215,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontSize: 15),
                   ),
                   onPressed: () {
-                    _login();
+                    Navigator.pushReplacementNamed(
+                        context, '/ForgotPasswordPage');
                   },
                 ),
               ),
@@ -222,7 +228,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    _login();
+                    Navigator.pushReplacementNamed(
+                        context, '/RegistrationPage');
                   },
                 ),
               ),
