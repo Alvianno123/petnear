@@ -40,8 +40,6 @@ class RegistrationPage extends StatelessWidget {
       ).then((value) {
         var data = jsonDecode(value.body);
         print(data["message"]);
-
-        tampil();
       });
     } catch (e) {
       print(e);
@@ -355,6 +353,7 @@ class RegistrationPage extends StatelessWidget {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       _daftar();
+                      tampil();
                       clearText();
                     }
                   },
