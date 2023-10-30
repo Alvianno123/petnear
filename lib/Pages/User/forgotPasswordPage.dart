@@ -1,12 +1,11 @@
-import 'dart:convert';
-import 'package:mailer/mailer.dart';
-import 'package:petnear/Email/email.dart';
+import 'package:petnear/Assets/Email/email.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:petnear/Api/apiConnect.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+import 'package:fluttertoast/fluttertoast.dart';
+
+// ignore: must_be_immutable
+class forgotPasswordPage extends StatelessWidget {
+  static final TextEditingController email = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
@@ -48,7 +47,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   }
                   return null;
                 },
-                //   controller: user,
+                controller: email,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 1, horizontal: 10),
@@ -67,7 +66,10 @@ class ForgotPasswordPage extends StatelessWidget {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       sendEmail(context);
-                      //   tampil();
+                      tampil();
+
+                      print(
+                          "Process Send Email To : (${email.text.toString()})");
                     }
                   },
                   child: const Text('Registrasi / Daftar'),

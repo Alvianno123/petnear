@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-import 'Api/apiConnect.dart';
-import 'Pages/User/memberPage.dart';
+import 'Assets/Api/apiConnect.dart';
+import 'Pages/MainMenu/memberPage.dart';
 import 'Pages/Oprator/opratorPage.dart';
 import 'Pages/Admin/adminPage.dart';
 import 'Pages/ContactCenter/contactPage.dart';
@@ -35,9 +35,9 @@ class MyApp extends StatelessWidget {
               username: username,
             ),
         '/ContactPage': (BuildContext context) => new ContactPage(),
-        '/RegistrationPage': (BuildContext context) => new RegistrationPage(),
+        '/RegistrationPage': (BuildContext context) => new registrationPage(),
         '/ForgotPasswordPage': (BuildContext context) =>
-            new ForgotPasswordPage(),
+            new forgotPasswordPage(),
         '/MyHomePage': (BuildContext context) => new MyHomePage(),
       },
     );

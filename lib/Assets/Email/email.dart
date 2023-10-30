@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
+import 'package:petnear/Pages/User/forgotPasswordPage.dart';
 
 sendEmail(BuildContext context //For showing snackbar
     ) async {
@@ -18,10 +18,11 @@ sendEmail(BuildContext context //For showing snackbar
   // Create our message.
   final message = Message()
         ..from = Address(username, 'PetNear')
-        ..recipients.add('alviannowijaya@gmail.com')
+        ..recipients.add('${forgotPasswordPage.email.text}')
+        //..recipients.add(${email.text.toString()})
         ..ccRecipients.addAll([
-          'richabellark@gmail.com',
-          'xyz@gmail.com'
+          'alviannowijaya@gmail.com',
+          'alviannowijaya@gmail.com'
         ]) // For Adding Multiple Recipients
         // ..bccRecipients.add(Address('a@gmail.com')) For Binding Carbon Copy of Sent Email
         ..subject = 'PetNear - Forgot Password'
@@ -38,8 +39,9 @@ sendEmail(BuildContext context //For showing snackbar
   try {
     final sendReport = await send(message, smtpServer);
     print('Message sent: ' + sendReport.toString());
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Mail Send Successfully")));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            "Mail Send Successfully To : ${forgotPasswordPage.email.text}")));
   } on MailerException catch (e) {
     print('Message not sent.');
     print(e.message);

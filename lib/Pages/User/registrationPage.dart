@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:petnear/Api/apiConnect.dart';
+import 'package:petnear/Assets/Api/apiConnect.dart';
 
-class RegistrationPage extends StatelessWidget {
-  RegistrationPage({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class registrationPage extends StatelessWidget {
+  registrationPage({Key? key}) : super(key: key);
   TextEditingController user = new TextEditingController();
   TextEditingController pass = new TextEditingController();
   TextEditingController nama = new TextEditingController();
